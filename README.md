@@ -56,3 +56,8 @@ Rewrite the printf function(cut verion).
    · '.' - precision followed by a decimal number.
    · '*' - when processing the format string, the value is read from the argument list.
 ```
+
+#### Instruction for test:
+```
+gcc .\main.c .\srcs\*.c
+```

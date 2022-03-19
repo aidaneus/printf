@@ -49,12 +49,12 @@ int	write_sym(int c, int ch)
 
 int	print_c(char c, t_spec spec)
 {
-	if (spec.w && !spec.z && !spec.m)
-		spec.num = write_sym(' ', spec.w - 1) + spec.num;
-	else if (spec.z && !spec.m)
-		spec.num = write_sym('0', spec.w - 1) + spec.num;
+	if (spec.width && !spec.zero && !spec.minus)
+		spec.num = write_sym(' ', spec.width - 1) + spec.num;
+	else if (spec.zero && !spec.minus)
+		spec.num = write_sym('0', spec.width - 1) + spec.num;
 	spec.num = ft_putchar(c) + spec.num;
-	if (spec.m)
-		spec.num = write_sym(' ', spec.w - 1) + spec.num;
+	if (spec.minus)
+		spec.num = write_sym(' ', spec.width - 1) + spec.num;
 	return (spec.num);
 }

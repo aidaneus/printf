@@ -14,10 +14,10 @@
 
 int		ft_hex_if(t_spec spec)
 {
-	if (spec.p >= spec.len)
-		spec.num = write_sym(' ', spec.w - spec.p) + spec.num;
+	if (spec.precision >= spec.len)
+		spec.num = write_sym(' ', spec.width - spec.precision) + spec.num;
 	else
-		spec.num = write_sym(' ', spec.w - spec.len) + spec.num;
+		spec.num = write_sym(' ', spec.width - spec.len) + spec.num;
 	return (spec.num);
 }
 
@@ -27,18 +27,18 @@ int		ft_hex(va_list arg, int num, int flag, t_spec spec)
 
 	line = ft_trans(va_arg(arg, unsigned int), num, flag);
 	spec.len = ft_strlen(line);
-	if (spec.p == 0 && spec.dot && line[0] == '0')
+	if (spec.precision == 0 && spec.dot && line[0] == '0')
 		spec.len--;
-	if (spec.w && !spec.m && !spec.z && !spec.dot)
-		spec.num = write_sym(' ', spec.w - spec.len);
-	else if (spec.w && (spec.dot || !spec.z) && !spec.m)
+	if (spec.width && !spec.minus && !spec.zero && !spec.dot)
+		spec.num = write_sym(' ', spec.width - spec.len);
+	else if (spec.width && (spec.dot || !spec.zero) && !spec.minus)
 		spec.num = ft_hex_if(spec);
-	if (spec.z && !spec.m && !spec.dot && spec.w)
-		spec.num = write_sym('0', spec.w - spec.len);
+	if (spec.zero && !spec.minus && !spec.dot && spec.width)
+		spec.num = write_sym('0', spec.width - spec.len);
 	if (spec.dot)
-		spec.num = write_sym('0', spec.p - spec.len) + spec.num;
+		spec.num = write_sym('0', spec.precision - spec.len) + spec.num;
 	spec.num = ft_putstr(line, spec.len) + spec.num;
-	if (spec.m)
+	if (spec.minus)
 		spec.num = ft_hex_if(spec);
 	free(line);
 	return (spec.num);

@@ -18,14 +18,14 @@
 
 typedef	struct
 {
-	int m;
+	int minus;
 	int dot;
-	int z;
-	int w;
-	int p;
+	int zero;
+	int width;
+	int precision;
 	int len;
 	int num;
-	int sign_w;
+	int sign_width;
 	int itoa;
 }		t_spec;
 int		ft_printf(const char *format, ...);
